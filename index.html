@@ -525,7 +525,7 @@ regions.forEach(function(r){
 (function buildOverview(){
   var counts={KMT:0,DPP:0,TPP:0,IND:0};
   regions.forEach(function(r){counts[r.holder]=(counts[r.holder]||0)+1;});
-  var order=['KMT','DPP','TPP','IND'];
+  var order=['DPP','IND','TPP','KMT'];  // green ◄ ── ► blue, matching the lean bar
   var bar=document.getElementById('balbar'), leg=document.getElementById('balleg');
   order.forEach(function(k){
     if(!counts[k])return;
@@ -806,7 +806,7 @@ function renderScoreboard(){
     return;
   }
   bar.style.display='';
-  var segs=[['KMT',P.KMT.en,HEX.KMT],['DPP',P.DPP.en,HEX.DPP],['TPP',P.TPP.en,HEX.TPP],['IND',P.IND.en,HEX.IND],['UND','Undecided',UNDGREY]];
+  var segs=[['DPP',P.DPP.en,HEX.DPP],['IND',P.IND.en,HEX.IND],['TPP',P.TPP.en,HEX.TPP],['KMT',P.KMT.en,HEX.KMT],['UND','Undecided',UNDGREY]];
   segs.forEach(function(o){ if(!cnt[o[0]])return;
     var s=document.createElement('span'); s.style.width=(cnt[o[0]]/22*100)+'%'; s.style.background=o[2]; bar.appendChild(s); });
   if(called<22){ var g=document.createElement('span'); g.style.width=((22-called)/22*100)+'%'; g.style.background='var(--surface-3)'; bar.appendChild(g); }
